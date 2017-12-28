@@ -9,8 +9,8 @@ Rest API form QRCode generation
 ## Controllers
 
 ### URI(s)
-Description | URI | HTTP Method | Payload | Note
------------ | --- | ----------- | ------- | ----
+Description | URI | HTTP Method | Payload | Note(s)
+----------- | --- | ----------- | ------- | -------
 Service health check | http://<host>:<server port>/health | GET | { "name":"name", "url":"url" } |
 QRCode generation | http://<host>:<server port>/generate | POST | { "name":"name", "url":"url" } |
 
