@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,17 @@ public class QRCodeGenerator {
     private static final String FILE_PATH = "images/";
     private static final String FILE_TYPE = "png";
     private static final int SIZE = 125;
+
+    /**
+     * Make sure that FILE_PATH exists
+     */
+    @PostConstruct
+    private void setup() {
+        File file = new File(FILE_PATH);
+        if (!file.exists() || !file.isDirectory()) {
+            file.mkdir();
+        }
+    }
 
     /**
      *
