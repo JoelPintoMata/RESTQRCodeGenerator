@@ -1,1 +1,1 @@
-web: mvn clean spring-boot:run -Dserver.port=9999 -Dhttp.port=9999
+web: mvn clean spring-boot:run -Dserver.port=$PORT
