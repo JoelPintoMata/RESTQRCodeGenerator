@@ -13,6 +13,7 @@ Description | URI | HTTP Method | Payload | Note(s)
 ----------- | --- | ----------- | ------- | -------
 Service health check | http://<host>:<server port>/health | GET | { "name":"name", "url":"url" } |
 QRCode generation | http://<host>:<server port>/generate | POST | { "name":"name", "url":"url" } |
+QRCode generation and return | http://<host>:<server port>/generateAndGet | POST | { "name":"name", "url":"url" } |
 
 ## Usage
 ```

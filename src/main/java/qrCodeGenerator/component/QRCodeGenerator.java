@@ -58,11 +58,11 @@ public class QRCodeGenerator {
      * Generates a QRCode
      * @param name the final image file name
      * @param text the text to be included in the QRCode
-     * @return a boolean with the operation result
+     * @return an image
      * @throws WriterException
      * @throws IOException
      */
-    public boolean qrCodeGenerator(String name, String text) throws WriterException, IOException {
+    public File qrCodeGenerator(String name, String text) throws WriterException, IOException {
         File file = new File(FILE_PATH + name + "." + FILE_TYPE);
 
         // Create the ByteMatrix for the QRCode that encodes the given String
@@ -92,6 +92,7 @@ public class QRCodeGenerator {
                 }
             }
         }
-        return ImageIO.write(image, FILE_TYPE, file);
+        ImageIO.write(image, FILE_TYPE, file);
+        return file;
     }
 }
