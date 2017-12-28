@@ -57,6 +57,7 @@ public class QRCodeGenerator {
         Graphics2D graphics = (Graphics2D) image.getGraphics();
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, matrixWidth, matrixWidth);
+
         // Paint and save the image using the ByteMatrix
         graphics.setColor(Color.BLACK);
 
