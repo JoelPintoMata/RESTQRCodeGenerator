@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -34,10 +35,21 @@ public class QRCodeGenerator {
      * Make sure that FILE_PATH exists
      */
     @PostConstruct
-    private void setup() {
+    private void postConstruct() {
         File file = new File(FILE_PATH);
         if (!file.exists() || !file.isDirectory()) {
             file.mkdir();
+        }
+    }
+
+    /**
+     * Make sure that all images under FILE_PATH are deleted
+     */
+    @PreDestroy
+    private void preDestroy() {
+        File file = new File(FILE_PATH);
+        if (file.exists() && file.isDirectory()) {
+            file.delete();
         }
     }
 
