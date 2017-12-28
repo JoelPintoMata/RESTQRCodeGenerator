@@ -19,5 +19,10 @@ QRCode generation | http://<host>:<server port>/generate | POST | { "name":"name
 mvn clean spring-boot:run
 ```
 
+## Test
+
+### Integration
+Check newman scripts at src/test/resources
+
 ## Further reading
 [zxing on github](https://github.com/zxing/zxing)
