@@ -1,1 +1,1 @@
-web: mvn clean spring-boot:run -Dserver.port=$PORT
+web: java -Dhttp.port=$PORT $JAVA_OPTS -cp target/classes:target/dependency/* qrCodeGenerator.Main
