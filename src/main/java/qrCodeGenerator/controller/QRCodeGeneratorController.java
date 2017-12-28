@@ -38,7 +38,8 @@ public class QRCodeGeneratorController {
     }
 
     @RequestMapping(value = "/generate", method = RequestMethod.POST)
-    public String generate(@RequestBody Map<String, Object> payload) {
+    @ResponseBody
+    String generate(@RequestBody Map<String, Object> payload) {
         Boolean result;
         try {
             result = qrCodeGenerator.qrCodeGenerator(payload.get("name").toString(), payload.get("url").toString());
