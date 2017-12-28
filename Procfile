@@ -1,1 +1,1 @@
-web: java -Dhttp.port=$PORT $JAVA_OPTS -cp target/classes:target/dependency/* qrCodeGenerator.Main
+web: java -Dserver.port=$PORT $JAVA_OPTS -cp target/classes:target/dependency/* qrCodeGenerator.Main
