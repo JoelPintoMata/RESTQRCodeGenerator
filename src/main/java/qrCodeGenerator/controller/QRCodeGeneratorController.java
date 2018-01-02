@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import qrCodeGenerator.component.QRCodeGenerator;
 
 import java.io.File;
@@ -29,18 +26,21 @@ public class QRCodeGeneratorController {
     @Autowired
     private QRCodeGenerator qrCodeGenerator;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping("/")
     @ResponseBody
     String home() {
         return "Hello World!";
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping("/health")
     @ResponseBody
     String health() {
         return "green";
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/generate", method = RequestMethod.POST)
     @ResponseBody
     boolean generate(@RequestBody Map<String, Object> payload) {
@@ -56,6 +56,7 @@ public class QRCodeGeneratorController {
         return result;
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/generateAndGet", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     byte[] generateAndGet(@RequestBody Map<String, Object> payload) {
