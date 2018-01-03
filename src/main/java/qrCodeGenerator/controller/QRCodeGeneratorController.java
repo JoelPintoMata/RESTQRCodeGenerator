@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import qrCodeGenerator.component.QRCodeGenerator;
+import sun.misc.BASE64Encoder;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,7 +60,7 @@ public class QRCodeGeneratorController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/generateAndGet", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
-    byte[] generateAndGet(@RequestBody Map<String, Object> payload) {
+    byte[] generateAndGetImage(@RequestBody Map<String, Object> payload) {
         Boolean result = false;
         byte[] bytes = new byte[0];
         try {
@@ -71,5 +72,24 @@ public class QRCodeGeneratorController {
         }
         LOGGER.info("Result: {}", result);
         return bytes;
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/generateAndGetString", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
+    String generateAndGetString(@RequestBody Map<String, Object> payload) {
+        String result = null;
+        try {
+            File file = qrCodeGenerator.qrCodeGenerator(payload.get("name").toString(), payload.get("url").toString());
+            byte[] bytes = IOUtils.toByteArray(new FileInputStream(file));
+            BASE64Encoder encoder = new BASE64Encoder();
+            result = encoder.encode(bytes);
+
+        } catch (WriterException | IOException e) {
+            LOGGER.error("Error {} with cause {}", e.getMessage(), e.getCause());
+        }
+        LOGGER.info("Result: {}", result);
+
+        return result;
     }
 }
