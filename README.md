@@ -11,10 +11,10 @@ Rest API form QRCode generation
 ### URI(s)
 Description | URI | HTTP Method | Payload | Note(s)
 ----------- | --- | ----------- | ------- | -------
-Service health check | http://<host>:<server port>/health | GET | |
-QRCode generation | http://<host>:<server port>/generate | POST | { "name":"name", "url":"url" } |
-QRCode generation and return the image | http://<host>:<server port>/generateAndGetImage | POST | { "name":"name", "url":"url" } |
-QRCode generation and return the image string Base64 encoded | http://<host>:<server port>/generateAndGetString | POST | { "name":"name", "url":"url" } |
+Service health check | /health | GET | |
+QRCode generation | /generate | POST | { "name":"name", "url":"url" } |
+QRCode generation and return the image | /generateAndGet | POST | { "name":"name", "url":"url" } |
+QRCode generation and return the image string Base64 encoded | /generateAndGetString | POST | { "name":"name", "url":"url" } |
 
 ## Usage
 ```
