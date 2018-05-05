@@ -1,0 +1,86 @@
+{
+	"info": {
+		"name": "QRCodeGenerator",
+		"_postman_id": "552704a1-abcc-0547-dddb-9c836b50f0e7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/generate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"name\",\n\t\"url\":\"url\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/generate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"generate"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/generateAndGet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"name\",\n\t\"url\":\"url\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/generateAndGet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"generateAndGet"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/health",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

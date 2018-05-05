@@ -14,6 +14,7 @@ import sun.misc.BASE64Encoder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -75,21 +76,23 @@ public class QRCodeGeneratorController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/generateAndGetString", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
+    @RequestMapping(value = "/generateAndGetString", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
     @ResponseBody
-    String generateAndGetString(@RequestBody Map<String, Object> payload) {
+    Map<String, String> generateAndGetString(@RequestBody Map<String, Object> payload) {
         String result = null;
+        HashMap<String, String> map = new HashMap<>();
         try {
             File file = qrCodeGenerator.qrCodeGenerator(payload.get("name").toString(), payload.get("url").toString());
             byte[] bytes = IOUtils.toByteArray(new FileInputStream(file));
             BASE64Encoder encoder = new BASE64Encoder();
             result = encoder.encode(bytes);
 
+            map.put("body", result);
+
         } catch (WriterException | IOException e) {
             LOGGER.error("Error {} with cause {}", e.getMessage(), e.getCause());
         }
         LOGGER.info("Result: {}", result);
-
-        return result;
+        return map;
     }
 }
